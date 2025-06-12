@@ -1,0 +1,153 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expand_var_3.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/15 11:13:50 by mez-zahi          #+#    #+#             */
+/*   Updated: 2025/06/09 14:05:37 by mez-zahi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/minishell.h"
+
+// int	ft_fofo(char *str, char c)
+// {
+// 	if (!str)
+// 		return(0);
+// 	while (*str)
+// 	{
+// 		if (*str == c)
+// 			return (1);
+// 		str++;
+// 	}
+// 	return (0);
+// }
+
+// t_token_node *ft_test(t_token_node *debut)
+// {
+// 	t_token_node *temp;
+// 	t_token_node *next;
+
+// 	temp = debut;
+// 	while (temp)
+// 	{
+// 		if (ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
+// 		{
+// 			next = temp->next;
+// 			if (next && next->type == SPC)
+// 			{
+// 				next->type = STRING;
+// 				next = next->next;
+// 				while (next && next->type == SPC)
+// 				{
+// 					next->type = STRING;
+// 					next = next->next;
+// 				}
+// 			}
+// 			temp = next;
+// 			continue;
+// 		}
+// 		temp = temp->next;
+// 	}
+// 	return (debut);
+// }
+// int is_assignment_value(t_token_node *current, t_token_node *assignment_start)
+// {
+//     t_token_node *temp = assignment_start->next;
+    
+//     while (temp && temp != current)
+//     {
+//         if (temp->type != SPC && ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
+//             return (0);
+//         temp = temp->next;
+//     }
+//     return (temp == current);
+// }
+
+// t_token_node *ft_test(t_token_node *debut)
+// {
+//     t_token_node *temp;
+//     t_token_node *next;
+//     t_token_node *assignment_start;
+    
+//     temp = debut;
+//     assignment_start = NULL;
+//     while (temp)
+//     {
+//         if (ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
+//         {
+//             assignment_start = temp;
+//             next = temp->next;            
+//             while (next)
+//             {
+//                 if (ft_fofo(next->value, '=') == 1 && next->flag == 1)
+//                     break;
+//                 if (next->type == SPC)
+//                     next->type = STRING;
+                
+//                 next = next->next;
+//             }
+//             temp = next;
+//             continue;
+//         }
+//         temp = temp->next;
+//     }
+//     return (debut);
+// }
+
+static int	special_case_len(char *str)
+{
+	int	i;
+
+	if (str[1] == '$' || str[1] == '?')
+		return (2);
+	if (ft_isdigit(str[1]))
+		return (2);
+	i = 1;
+	while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
+		i++;
+	return (i);
+}
+
+char	*decoupe_chaine_en_segment(char *str_var)
+{
+	int	i;
+
+	i = 0;
+	if (!str_var || str_var[0] == '\0')
+		return (NULL);
+	if (str_var[0] != '$')
+	{
+		while (str_var[i] && str_var[i] != '$')
+			i++;
+		return (ft_substr(str_var, 0, i));
+	}
+	i = special_case_len(str_var);
+	return (ft_substr(str_var, 0, i));
+}
+
+char	*expand_vars_and_heredoc(char *cmd, t_env_var *env, t_minishell *data)
+{
+	char	*cmd_final;
+	char	*str_var;
+	char	*str_exp;
+	int		i;
+
+	i = 0;
+	cmd_final = NULL;
+	while (cmd[i])
+	{
+		str_var = decoupe_chaine_en_segment(cmd + i);
+		if (str_var[0] != '$')
+			str_exp = ft_strdup(str_var);
+		else
+			str_exp = expand_segment(str_var, env, data);
+		if (!cmd_final)
+			cmd_final = ft_strdup("");
+		cmd_final = ft_strjoin(cmd_final, str_exp);
+		i += ft_strlen(str_var);
+	}
+	return (cmd_final);
+}
