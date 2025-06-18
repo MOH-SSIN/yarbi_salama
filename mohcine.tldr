@@ -1,0 +1,173 @@
+{
+	"tldrawFileFormatVersion": 1,
+	"schema": {
+		"schemaVersion": 2,
+		"sequences": {
+			"com.tldraw.store": 4,
+			"com.tldraw.asset": 1,
+			"com.tldraw.camera": 1,
+			"com.tldraw.document": 2,
+			"com.tldraw.instance": 25,
+			"com.tldraw.instance_page_state": 5,
+			"com.tldraw.page": 1,
+			"com.tldraw.instance_presence": 6,
+			"com.tldraw.pointer": 1,
+			"com.tldraw.shape": 4,
+			"com.tldraw.asset.bookmark": 2,
+			"com.tldraw.asset.image": 5,
+			"com.tldraw.asset.video": 5,
+			"com.tldraw.shape.group": 0,
+			"com.tldraw.shape.text": 2,
+			"com.tldraw.shape.bookmark": 2,
+			"com.tldraw.shape.draw": 2,
+			"com.tldraw.shape.geo": 9,
+			"com.tldraw.shape.note": 8,
+			"com.tldraw.shape.line": 5,
+			"com.tldraw.shape.frame": 0,
+			"com.tldraw.shape.arrow": 5,
+			"com.tldraw.shape.highlight": 1,
+			"com.tldraw.shape.embed": 4,
+			"com.tldraw.shape.image": 4,
+			"com.tldraw.shape.video": 2,
+			"com.tldraw.binding.arrow": 0
+		}
+	},
+	"records": [
+		{
+			"gridSize": 10,
+			"name": "",
+			"meta": {},
+			"id": "document:document",
+			"typeName": "document"
+		},
+		{
+			"meta": {},
+			"id": "page:page",
+			"name": "Page 1",
+			"index": "a1",
+			"typeName": "page"
+		},
+		{
+			"id": "pointer:pointer",
+			"typeName": "pointer",
+			"x": 375.85626220703125,
+			"y": 179.05576374809016,
+			"lastActivityTimestamp": 1750275608172,
+			"meta": {}
+		},
+		{
+			"followingUserId": null,
+			"opacityForNextShape": 1,
+			"stylesForNextShape": {},
+			"brush": null,
+			"scribbles": [],
+			"cursor": {
+				"type": "default",
+				"rotation": 0
+			},
+			"isFocusMode": false,
+			"exportBackground": true,
+			"isDebugMode": false,
+			"isToolLocked": false,
+			"screenBounds": {
+				"x": 0,
+				"y": 0,
+				"w": 1276.800048828125,
+				"h": 886.800048828125
+			},
+			"insets": [
+				false,
+				false,
+				true,
+				false
+			],
+			"zoomBrush": null,
+			"isGridMode": false,
+			"isPenMode": false,
+			"chatMessage": "",
+			"isChatting": false,
+			"highlightedUserIds": [],
+			"isFocused": true,
+			"devicePixelRatio": 1.6666666269302368,
+			"isCoarsePointer": false,
+			"isHoveringCanvas": true,
+			"openMenus": [],
+			"isChangingStyle": false,
+			"isReadonly": false,
+			"meta": {},
+			"duplicateProps": null,
+			"id": "instance:instance",
+			"currentPageId": "page:page",
+			"typeName": "instance"
+		},
+		{
+			"editingShapeId": "shape:Jegy1pIEwjdhJFrNqRWxn",
+			"croppingShapeId": null,
+			"selectedShapeIds": [
+				"shape:Jegy1pIEwjdhJFrNqRWxn"
+			],
+			"hoveredShapeId": "shape:lBXRLbHB2y_5hSQhzocgc",
+			"erasingShapeIds": [],
+			"hintingShapeIds": [],
+			"focusedGroupId": null,
+			"meta": {},
+			"id": "instance_page_state:page:page",
+			"pageId": "page:page",
+			"typeName": "instance_page_state"
+		},
+		{
+			"x": 380.80938720703125,
+			"y": 202.85362956245672,
+			"z": 1,
+			"meta": {},
+			"id": "camera:page:page",
+			"typeName": "camera"
+		},
+		{
+			"x": -62.06878662109375,
+			"y": 190.76512577811945,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:lBXRLbHB2y_5hSQhzocgc",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1108,
+				"text": "--> une fois kandir : export a=$var b=$var_1 c=$var_2  d=$var_3  e=$var_4 f=$var_5 \n ktkhdme msn mai une fois faire \n->minishell$ export a=$var_3 b",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "a1",
+			"typeName": "shape"
+		},
+		{
+			"x": -25.11248779296875,
+			"y": 309.14326908866633,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:Jegy1pIEwjdhJFrNqRWxn",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 403.9750061035156,
+				"text": "minishell$ export a=$var_3 b\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:a=,type:5,flag:0\n,value:ls,type:9,flag:1\n,value: ,type:4,flag:1\n,value: ,type:4,flag:1\n,value: ,type:4,flag:1\n,value:-l,type:9,flag:1\n,value: ,type:4,flag:1\n,value: ,type:4,flag:1\n,value: ,type:4,flag:1\n,value:-a,type:9,flag:1\n,value: ,type:4,flag:0\n,value:b,type:5,flag:0\n****\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:a=ls,type:5,flag:1\n,value: ,type:5,flag:1\n,value: ,type:5,flag:1\n,value: ,type:5,flag:1\n,value:-l,type:5,flag:1\n,value: ,type:5,flag:1\n,value: ,type:5,flag:1\n,value: ,type:5,flag:1\n,value:-a,type:5,flag:1\n,value: ,type:5,flag:1\n,value:b,type:5,flag:1\n               commande 0 : [export]\noutfile: 4\ninfile: 3\nisfirst: 1\nislast: 1\nargv[0] = export\nargv[1] = a=ls   -l   -a b",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "a241N",
+			"typeName": "shape"
+		}
+	]
+}

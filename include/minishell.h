@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:39:49 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/09 17:23:11 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/18 11:55:13 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void					print_cmd(t_cmd *cur);
 void					print_env(t_env_var *env);
 t_token_node			*ft_test(t_token_node *debut);
 int						ft_fofo(char *str, char c);
+char **split_words_and_spaces(const char *str);
 //<-
 
 void					clean_cmd_line(char *command);

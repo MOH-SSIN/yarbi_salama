@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 01:23:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/09 15:58:07 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/18 20:46:56 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,161 @@
 
 int			g_status = 0;
 
+// int	oui_space(char *str)
+// {
+// 	while(*str)
+// 	{
+// 		if (!is_espace(*str))
+// 			return(0);
+// 		str++;	
+// 	}
+// 	return (1);
+// }
+
+
+// t_token_node *ft_mohcine(t_token_node *debut)
+// {
+//     t_token_node	*temp;
+// 	t_token_node	*curt = NULL;
+// 	t_token_node	*chek;
+
+// 	temp = debut;
+//     while (temp)
+//     {
+//         if (temp->flag == 1 && ft_fofo(temp->value, '=') == 1)
+// 		{
+// 			curt = temp;
+// 			break ;
+// 		}
+// 		temp = temp->next;
+//     }
+// 	if (curt == NULL)
+// 		return debut;
+// 	while (curt)
+// 	{
+// 		if (oui_space(curt->value))
+// 		{
+// 			chek = curt->next;
+// 			if (chek && chek->flag == 1 && ft_fofo(chek->value, '=') == 1)
+// 				curt->type = SPC;
+// 		}
+// 		curt = curt->next;
+// 	}
+//     return debut;
+// }
+
+// t_token_node	*ikram(t_token_node *debut)
+// {
+// 	t_token_node *temp;
+// 	t_token_node *next;
+
+// 	temp = debut;
+// 	while (temp)
+// 	{
+// 		if (ft_fofo(temp->value, '=') && temp->flag == 1)
+// 		{
+// 			next = temp->next;
+// 			while (next && !(ft_fofo(next->value, '=') && next->flag == 1))
+// 			{
+// 				if (next->type == SPC)
+// 					next->type = STRING;
+// 				next = next->next;
+// 			}
+// 			temp = next;
+// 			continue;
+// 		}
+// 		temp = temp->next;
+// 	}
+// 	return (ft_mohcine(debut));
+// 	return (debut);
+// }
+
+
+
+
+// nouvelle version 
+int	oui_space(char *str)
+{
+	while (*str)
+	{
+		if (!is_espace(*str)) // ou isspace(*str) si tu utilises <ctype.h>
+			return (0);
+		str++;	
+	}
+	return (1);
+}
+t_token_node *ft_mohcine(t_token_node *debut)
+{
+	t_token_node	*temp;
+	t_token_node	*curt = NULL;
+	t_token_node	*chek;
+
+	temp = debut;
+	while (temp)
+	{
+		if (temp->flag == 1 && ft_fofo(temp->value, '='))
+		{
+			curt = temp;
+			break ;
+		}
+		temp = temp->next;
+	}
+	if (curt == NULL)
+		return debut;
+	while (curt)
+	{
+		if (oui_space(curt->value))
+		{
+			chek = curt->next;
+			if (chek && chek->flag == 1 && ft_fofo(chek->value, '='))
+				curt->type = SPC; // Ne pas toucher : entre deux affectations
+		}
+		curt = curt->next;
+	}
+	return debut;
+}
+
+t_token_node	*ikram(t_token_node *debut)
+{
+	t_token_node *temp;
+	t_token_node *next;
+
+	temp = debut;
+	while (temp)
+	{
+		if (ft_fofo(temp->value, '=') && temp->flag == 1)
+		{
+			next = temp->next;
+			while (next && !(ft_fofo(next->value, '=') && next->flag == 1))
+			{
+				next->type = 5;   // transforme tout en type VAR_ASSIGN ou équivalent
+				next->flag = 1;   // indique que ça fait partie de la valeur d’affectation
+				next = next->next;
+			}
+			temp = next;
+			continue;
+		}
+		temp = temp->next;
+	}
+	return ft_mohcine(debut);
+}
+
+t_token_node *ikram_2(t_token_node *debut)
+{
+	t_token_node *temp;
+
+	temp = debut;
+	while (temp)
+	{
+		if (temp->type == SPC && temp->flag == 1)
+			temp->type = STRING;
+		temp = temp->next;
+	}
+	return (debut);
+}
+
+
+//
 t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 		t_minishell *data)
 {
@@ -21,11 +176,16 @@ t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 	t_cmd			*cmd_final;
 
 	debut = expand_var(debut_token, debut_env, data);
+	// exit(1);
+	print_token(debut);
+	printf("****\n");
+	// exit(1);
 	debut = ft_concate_tkn(debut);
-
-	debut = ft_test(debut);
+	// debut = ikram_2(debut);
+	debut = ikram(debut);
+	print_token(debut);
 	debut = ft_concate_tkn(debut);
-
+	// debut = ikram_2(debut);
 	debut = remove_red(debut);
 	debut = remove_invalid_tokens(debut);
 
@@ -54,7 +214,7 @@ void	handle_input(t_env_var *debut_env, t_minishell *data)
 			cmd_final = ft_prepare_cmd(debut_token, debut_env, data);
 			data->cmd_list = set_cmd_false_true(&cmd_final);
 			execute_cmds(data);
-			// print_cmd(cmd_final);
+			print_cmd(cmd_final);
 			clean_cmd_line(command);
 		}
 		if (command)
@@ -126,3 +286,17 @@ int	main(int argc, char **argv, char **env)
 	free_env(debut_env);
 	return (0);
 }
+
+/*
+Minishell$ export a="b c= d="
+➜ Minishell$ export $a
+➜ Minishell$ export p=$a
+➜ Minishell$ export
+
+
+
+export a=$var b=$var_1 c=$var_2  d=$var_3  e=$var_4 f=$var_5 
+
+
+
+*/
