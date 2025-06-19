@@ -71,8 +71,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": -25.11248779296875,
-			"y": 309.14326908866633,
+			"x": 243.5154273945558,
+			"y": 595.6595662653133,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -105,8 +105,8 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 372.7890625,
-				"text": "declare -x var=\"ls -la\"\ndeclare -x var_1=\"ls    -la\"\ndeclare -x var_2=\"ls        -la\"\ndeclare -x var_3=\"ls  -l  -a\"\ndeclare -x var_5=\"  ls -la  \"",
+				"w": 2081.1577948064664,
+				"text": "declare -x var=\"ls -la\"\ndeclare -x var_1=\"ls    -la\"\ndeclare -x var_2=\"ls        -la\"\ndeclare -x var_3=\"ls  -l  -a\"\ndeclare -x var_4=\"  ls -la  \"",
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -119,15 +119,18 @@
 		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 2404.858219946539,
-			"y": 2598.3633612971007,
-			"lastActivityTimestamp": 1750339595976,
+			"x": 19.595649129533285,
+			"y": 3834.619452206147,
+			"lastActivityTimestamp": 1750353175760,
 			"meta": {}
 		},
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {},
+			"stylesForNextShape": {
+				"tldraw:geo": "rectangle",
+				"tldraw:size": "xl"
+			},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
@@ -141,8 +144,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1171,
-				"h": 717
+				"w": 899,
+				"h": 892
 			},
 			"insets": [
 				false,
@@ -159,7 +162,7 @@
 			"isFocused": true,
 			"devicePixelRatio": 2,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
+			"isHoveringCanvas": false,
 			"openMenus": [],
 			"isChangingStyle": false,
 			"isReadonly": false,
@@ -170,9 +173,11 @@
 			"typeName": "instance"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:UHkfuJBkxdTjMZtzDgKTT",
 			"croppingShapeId": null,
-			"selectedShapeIds": [],
+			"selectedShapeIds": [
+				"shape:UHkfuJBkxdTjMZtzDgKTT"
+			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -183,12 +188,146 @@
 			"typeName": "instance_page_state"
 		},
 		{
-			"x": 1214.919662752546,
-			"y": 550.003010075777,
-			"z": 0.15329626719699174,
+			"x": 1642.172956205793,
+			"y": 338.70556882732103,
+			"z": 0.19754931519707974,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
+		},
+		{
+			"x": -1296.793823295493,
+			"y": 8491.187842220299,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:kb2vqBP76zR5huTLERyEq",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 20,
+				"text": "",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "a43kZ",
+			"typeName": "shape"
+		},
+		{
+			"x": -1104.500981371205,
+			"y": -13.036893119966976,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:yEW_XPxINQIpnqHnb1k_J",
+			"type": "geo",
+			"props": {
+				"w": 2780.4140893647013,
+				"h": 2962.996339591407,
+				"geo": "rectangle",
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "m",
+				"font": "draw",
+				"text": "",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"growY": 0,
+				"url": "",
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "a56rD",
+			"typeName": "shape"
+		},
+		{
+			"x": -901.8114042800676,
+			"y": 3276.552189614329,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:oNj0y6k56Ka6-asLc6L2Y",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 739.765625,
+				"text": "minishell$ export a=\"b c= d=\"\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:a=,type:5,flag:0\n,value:b c= d=,type:7,flag:0\n****\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:a=,type:5,flag:0\n,value:b c= d=,type:7,flag:0\n               commande 0 : [export]\noutfile: 4\ninfile: 3\nisfirst: 1\nislast: 1\nargv[0] = export\nargv[1] = a=b c= d=\nminishell$ export $a\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:b,type:9,flag:1\n,value: ,type:4,flag:1\n,value:c=,type:9,flag:1\n,value: ,type:4,flag:1\n,value:d=,type:9,flag:1\n****\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:b,type:9,flag:1\n,value: ,type:4,flag:1\n,value:c=,type:9,flag:1\n,value: ,type:4,flag:1\n,value:d=,type:9,flag:1\n               commande 0 : [export]\noutfile: 4\ninfile: 3\nisfirst: 1\nislast: 1\nargv[0] = export\nargv[1] = b\nargv[2] = c=\nargv[3] = d=",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "a62Nr",
+			"typeName": "shape"
+		},
+		{
+			"x": 255.43470381580687,
+			"y": 3337.555228284441,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:RDZXrgLQT6v9ZTZYyu90f",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "xl",
+				"w": 1062.5,
+				"text": "minishell$ export a=\"hdhdhdh=hdhdh hhdhd\"\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:a=,type:5,flag:0\n,value:hdhdhdh=hdhdh hhdhd,type:7,flag:0\n****\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:a=,type:5,flag:0\n,value:hdhdhdh=hdhdh hhdhd,type:7,flag:0\n               commande 0 : [export]\noutfile: 4\ninfile: 3\nisfirst: 1\nislast: 1\nargv[0] = export\nargv[1] = a=hdhdhdh=hdhdh hhdhd\nminishell$ export $a\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:hdhdhdh=hdhdh,type:9,flag:1\n,value: ,type:4,flag:1\n,value:hhdhd,type:9,flag:1\n****\nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:hdhdhdh=hdhdh hhdhd,type:5,flag:1\n**** NOMAMLE LA RESULTA COMME CA \nvalue:export,type:5,flag:0\n,value: ,type:4,flag:0\n,value:hdhdhdh=hdhdh,type:9,flag:1\n,value: ,type:4,flag:1\n,value:hhdhd,type:9,flag:1\n               c",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "a706v",
+			"typeName": "shape"
+		},
+		{
+			"x": 169.04409176547279,
+			"y": 7095.261964026011,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:Hi1Q8D_fa8o1w6pXBGEuw",
+			"type": "draw",
+			"props": {
+				"segments": [
+					{
+						"type": "free",
+						"points": [
+							{
+								"x": 0,
+								"y": 0,
+								"z": 0.5
+							}
+						]
+					}
+				],
+				"color": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "xl",
+				"isComplete": true,
+				"isClosed": false,
+				"isPen": false,
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "a80U9",
+			"typeName": "shape"
 		}
 	]
 }

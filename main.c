@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 01:23:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/19 14:54:03 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:02:56 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,11 +187,215 @@ t_token_node *hiba_diba(t_token_node *debut)
 
 #include <stdbool.h>
 
-bool	start_zone_has_equal(t_token_node *start)
+// bool	start_zone_has_equal(t_token_node *start)
+// {
+// 	return (start && start->flag == 1 && ft_strchr(start->value, '='));
+// }
+
+// t_token_node *ikram_batbota(t_token_node *head)
+// {
+// 	t_token_node *new_list = NULL;
+// 	t_token_node *cur = head;
+// 	t_token_node *tmp;
+// 	char *joined;
+
+// 	while (cur)
+// 	{
+// 		// ⚠️ Si token vide, on l'ignore
+// 		if (cur->flag == 1 && (!cur->value || cur->value[0] == '\0'))
+// 		{
+// 			cur = cur->next;
+// 			continue;
+// 		}
+// 		else if (cur->flag == 1 && start_zone_has_equal(cur))
+// 		{
+// 			joined = NULL;
+// 			while (cur && cur->flag == 1)
+// 			{
+// 				// Ne concatène que si cur->value n'est pas vide
+// 				if (cur->value && cur->value[0] != '\0')
+// 					joined = ft_strjoin(joined, cur->value);
+// 				cur = cur->next;
+// 			}
+// 			tmp = new_token(5, joined, -2);
+// 			tmp->flag = 1;
+// 			add_lst_back_token(&new_list, tmp);
+// 		}
+// 		else if (cur->flag == 1)
+// 		{
+// 			while (cur && cur->flag == 1)
+// 			{
+// 				if (cur->value && cur->value[0] != '\0') // ⛔ ignorer les vides
+// 				{
+// 					tmp = new_token(cur->type, cur->value, cur->fd_hrd);
+// 					tmp->flag = 1;
+// 					add_lst_back_token(&new_list, tmp);
+// 				}
+// 				cur = cur->next;
+// 			}
+// 		}
+// 		else
+// 		{
+// 			tmp = new_token(cur->type, cur->value, cur->fd_hrd);
+// 			tmp->flag = cur->flag;
+// 			add_lst_back_token(&new_list, tmp);
+// 			cur = cur->next;
+// 		}
+// 	}
+// 	return new_list;
+// }
+//3hhhhh
+// bool	is_strict_assign_token(const char *value)
+// {
+// 	int i = 0;
+
+// 	if (!value)
+// 		return false;
+
+// 	while (value[i])
+// 	{
+// 		if (value[i] == '=')
+// 		{
+// 			// Ex: "a=" → bon. "=x" → pas bon.
+// 			return (i > 0); // '=' n'est pas en 1ère position
+// 		}
+// 		i++;
+// 	}
+// 	return false;
+// }
+// bool	is_assign_form(const char *value)
+// {
+// 	int i = 0;
+
+// 	if (!value)
+// 		return false;
+
+// 	while (value[i])
+// 	{
+// 		if (value[i] == '=')
+// 		{
+// 			// Vérifie qu'il y a un nom de variable avant le =
+// 			return (i > 0 && value[i + 1] == '\0');
+// 		}
+// 		i++;
+// 	}
+// 	return false;
+// }
+
+
+
+
+// t_token_node *ikram_batbota(t_token_node *head)
+// {
+// 	t_token_node *new_list = NULL;
+// 	t_token_node *cur = head;
+// 	t_token_node *tmp;
+// 	char *joined;
+
+// 	while (cur)
+// 	{
+// 		// ⚠️ ignorer les tokens vides
+// 		if (cur->flag == 1 && (!cur->value || cur->value[0] == '\0'))
+// 		{
+// 			cur = cur->next;
+// 			continue;
+// 		}
+// 		else if (cur->flag == 1 && start_zone_has_equal(cur))
+// 		{
+// 			// On commence concat (ex: a=...)
+// 			joined = NULL;
+// 			while (cur && cur->flag == 1)
+// 			{
+// 				if (cur->value && cur->value[0] != '\0')
+// 					joined = ft_strjoin(joined, cur->value);
+// 				cur = cur->next;
+// 			}
+// 			tmp = new_token(5, joined, -2); // type = STRING
+// 			tmp->flag = 1;
+// 			add_lst_back_token(&new_list, tmp);
+// 		}
+// 		else if (cur->flag == 1)
+// 		{
+// 			// Zone flag==1 mais pas une affectation → on copie simple
+// 			while (cur && cur->flag == 1)
+// 			{
+// 				if (cur->value && cur->value[0] != '\0')
+// 				{
+// 					tmp = new_token(cur->type, cur->value, cur->fd_hrd);
+// 					tmp->flag = 1;
+// 					add_lst_back_token(&new_list, tmp);
+// 				}
+// 				cur = cur->next;
+// 			}
+// 		}
+// 		else
+// 		{
+// 			// flag==0 → copie simple
+// 			tmp = new_token(cur->type, cur->value, cur->fd_hrd);
+// 			tmp->flag = 0;
+// 			add_lst_back_token(&new_list, tmp);
+// 			cur = cur->next;
+// 		}
+// 	}
+// 	return new_list;
+// }
+
+
+
+//4hh
+#include <stdbool.h>
+
+/**
+ * Vérifie si le token est une assignation stricte du type "a="
+ * Exemples valides : "a="
+ * Exemples invalides : "=x", "a=b", "a=b c"
+ */
+bool	is_strict_assign_token(const char *value)
 {
-	return (start && start->flag == 1 && ft_strchr(start->value, '='));
+	int i = 0;
+
+	if (!value)
+		return false;
+
+	while (value[i])
+	{
+		if (value[i] == '=')
+			return (i > 0); // '=' ne doit pas être en 1re position
+		i++;
+	}
+	return false;
 }
 
+/**
+ * Vérifie si une assignation est de la forme stricte "a=" (et non "a=b" ou "a=b c")
+ */
+bool	is_assign_form(const char *value)
+{
+	int i = 0;
+
+	if (!value)
+		return false;
+
+	while (value[i])
+	{
+		if (value[i] == '=')
+			return (i > 0 && value[i + 1] == '\0'); // = est à la fin
+		i++;
+	}
+	return false;
+}
+
+/**
+ * Vérifie si une zone de tokens (flag == 1) commence par un token de type "a=" uniquement.
+ */
+bool	start_zone_has_equal(t_token_node *start)
+{
+	return (start && start->flag == 1 && is_assign_form(start->value));
+}
+
+/**
+ * Concatène les zones de tokens flag==1 uniquement si elles commencent par un "a=".
+ */
 t_token_node *ikram_batbota(t_token_node *head)
 {
 	t_token_node *new_list = NULL;
@@ -201,35 +405,45 @@ t_token_node *ikram_batbota(t_token_node *head)
 
 	while (cur)
 	{
-		if (cur->flag == 1 && start_zone_has_equal(cur))
+		// ⚠️ ignorer les tokens vides avec flag==1
+		if (cur->flag == 1 && (!cur->value || cur->value[0] == '\0'))
 		{
-			// On commence la concaténation
+			cur = cur->next;
+			continue;
+		}
+		else if (cur->flag == 1 && start_zone_has_equal(cur))
+		{
+			//  Zone à concaténer car commence par a=
 			joined = NULL;
 			while (cur && cur->flag == 1)
 			{
-				joined = ft_strjoin(joined, cur->value);
+				if (cur->value && cur->value[0] != '\0')
+					joined = ft_strjoin(joined, cur->value);
 				cur = cur->next;
 			}
-			tmp = new_token(5, joined, -2); // type 5 = STRING ou VAR_ASSIGN
+			tmp = new_token(5, joined, -2); // Type = STRING ou VAR_ASSIGN
 			tmp->flag = 1;
 			add_lst_back_token(&new_list, tmp);
 		}
 		else if (cur->flag == 1)
 		{
-			// Zone flag==1 mais ne commence pas par `=`, on copie sans concat
+			// Sinon, on copie les tokens un par un
 			while (cur && cur->flag == 1)
 			{
-				tmp = new_token(cur->type, cur->value, cur->fd_hrd);
-				tmp->flag = 1;
-				add_lst_back_token(&new_list, tmp);
+				if (cur->value && cur->value[0] != '\0')
+				{
+					tmp = new_token(cur->type, cur->value, cur->fd_hrd);
+					tmp->flag = 1;
+					add_lst_back_token(&new_list, tmp);
+				}
 				cur = cur->next;
 			}
 		}
 		else
 		{
-			// Zone flag == 0, on copie normalement
+			// Token flag == 0 → copie normale
 			tmp = new_token(cur->type, cur->value, cur->fd_hrd);
-			tmp->flag = cur->flag;
+			tmp->flag = 0;
 			add_lst_back_token(&new_list, tmp);
 			cur = cur->next;
 		}
@@ -238,8 +452,6 @@ t_token_node *ikram_batbota(t_token_node *head)
 }
 
 
-//
-
 t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 		t_minishell *data)
 {
@@ -247,12 +459,12 @@ t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 	t_cmd			*cmd_final;
 
 	debut = expand_var(debut_token, debut_env, data);
-	// exit(1);
-	print_token(debut);
-	printf("****\n");
+	// print_token(debut);
+	// printf("****\n");
 	debut = hiba_diba(debut);
 	debut = ikram_batbota(debut);
-	print_token(debut);
+	// exit(1);
+	// print_token(debut);
 	// exit(1);
 	// debut = ft_concate_tkn(debut);
 	// debut = ikram_2(debut);
@@ -310,7 +522,7 @@ void	handle_input(t_env_var *debut_env, t_minishell *data)
 			cmd_final = ft_prepare_cmd(debut_token, debut_env, data);
 			data->cmd_list = set_cmd_false_true(&cmd_final);
 			execute_cmds(data);
-			print_cmd(cmd_final);
+			// print_cmd(cmd_final);
 			clean_cmd_line(command);
 		}
 		if (command)
