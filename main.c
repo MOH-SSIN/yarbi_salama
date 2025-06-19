@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 01:23:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/18 20:46:56 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/19 14:54:03 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,80 @@ t_token_node *ikram_2(t_token_node *debut)
 	}
 	return (debut);
 }
+//fihicer pour test ok
+
+t_token_node *hiba_diba(t_token_node *debut)
+{
+	t_token_node *temp;
+
+	temp = debut;
+	while (temp && temp->next)
+	{
+		if (ft_fofo(temp->value, '=') && temp->flag == 0)
+		{
+			if (temp->next->flag == 1)
+				temp->flag = 1;
+		}
+		temp = temp->next;
+	}
+	return debut;
+}
+
+#include <stdbool.h>
+
+bool	start_zone_has_equal(t_token_node *start)
+{
+	return (start && start->flag == 1 && ft_strchr(start->value, '='));
+}
+
+t_token_node *ikram_batbota(t_token_node *head)
+{
+	t_token_node *new_list = NULL;
+	t_token_node *cur = head;
+	t_token_node *tmp;
+	char *joined;
+
+	while (cur)
+	{
+		if (cur->flag == 1 && start_zone_has_equal(cur))
+		{
+			// On commence la concaténation
+			joined = NULL;
+			while (cur && cur->flag == 1)
+			{
+				joined = ft_strjoin(joined, cur->value);
+				cur = cur->next;
+			}
+			tmp = new_token(5, joined, -2); // type 5 = STRING ou VAR_ASSIGN
+			tmp->flag = 1;
+			add_lst_back_token(&new_list, tmp);
+		}
+		else if (cur->flag == 1)
+		{
+			// Zone flag==1 mais ne commence pas par `=`, on copie sans concat
+			while (cur && cur->flag == 1)
+			{
+				tmp = new_token(cur->type, cur->value, cur->fd_hrd);
+				tmp->flag = 1;
+				add_lst_back_token(&new_list, tmp);
+				cur = cur->next;
+			}
+		}
+		else
+		{
+			// Zone flag == 0, on copie normalement
+			tmp = new_token(cur->type, cur->value, cur->fd_hrd);
+			tmp->flag = cur->flag;
+			add_lst_back_token(&new_list, tmp);
+			cur = cur->next;
+		}
+	}
+	return new_list;
+}
 
 
 //
+
 t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 		t_minishell *data)
 {
@@ -179,11 +250,13 @@ t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 	// exit(1);
 	print_token(debut);
 	printf("****\n");
-	// exit(1);
-	debut = ft_concate_tkn(debut);
-	// debut = ikram_2(debut);
-	debut = ikram(debut);
+	debut = hiba_diba(debut);
+	debut = ikram_batbota(debut);
 	print_token(debut);
+	// exit(1);
+	// debut = ft_concate_tkn(debut);
+	// debut = ikram_2(debut);
+	// debut = ikram(debut);
 	debut = ft_concate_tkn(debut);
 	// debut = ikram_2(debut);
 	debut = remove_red(debut);
@@ -192,6 +265,29 @@ t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 	cmd_final = token_list_to_cmd_list(debut);
 	return (cmd_final);
 }
+// t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
+// 		t_minishell *data)
+// {
+// 	t_token_node	*debut;
+// 	t_cmd			*cmd_final;
+
+// 	debut = expand_var(debut_token, debut_env, data);
+// 	// exit(1);
+// 	print_token(debut);
+// 	printf("****\n");
+// 	// exit(1);
+// 	debut = ft_concate_tkn(debut);
+// 	// debut = ikram_2(debut);
+// 	debut = ikram(debut);
+// 	print_token(debut);
+// 	debut = ft_concate_tkn(debut);
+// 	// debut = ikram_2(debut);
+// 	debut = remove_red(debut);
+// 	debut = remove_invalid_tokens(debut);
+
+// 	cmd_final = token_list_to_cmd_list(debut);
+// 	return (cmd_final);
+// }
 
 void	handle_input(t_env_var *debut_env, t_minishell *data)
 {

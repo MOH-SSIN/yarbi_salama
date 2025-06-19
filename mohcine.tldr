@@ -48,82 +48,6 @@
 			"typeName": "page"
 		},
 		{
-			"id": "pointer:pointer",
-			"typeName": "pointer",
-			"x": 375.85626220703125,
-			"y": 179.05576374809016,
-			"lastActivityTimestamp": 1750275608172,
-			"meta": {}
-		},
-		{
-			"followingUserId": null,
-			"opacityForNextShape": 1,
-			"stylesForNextShape": {},
-			"brush": null,
-			"scribbles": [],
-			"cursor": {
-				"type": "default",
-				"rotation": 0
-			},
-			"isFocusMode": false,
-			"exportBackground": true,
-			"isDebugMode": false,
-			"isToolLocked": false,
-			"screenBounds": {
-				"x": 0,
-				"y": 0,
-				"w": 1276.800048828125,
-				"h": 886.800048828125
-			},
-			"insets": [
-				false,
-				false,
-				true,
-				false
-			],
-			"zoomBrush": null,
-			"isGridMode": false,
-			"isPenMode": false,
-			"chatMessage": "",
-			"isChatting": false,
-			"highlightedUserIds": [],
-			"isFocused": true,
-			"devicePixelRatio": 1.6666666269302368,
-			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
-			"openMenus": [],
-			"isChangingStyle": false,
-			"isReadonly": false,
-			"meta": {},
-			"duplicateProps": null,
-			"id": "instance:instance",
-			"currentPageId": "page:page",
-			"typeName": "instance"
-		},
-		{
-			"editingShapeId": "shape:Jegy1pIEwjdhJFrNqRWxn",
-			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:Jegy1pIEwjdhJFrNqRWxn"
-			],
-			"hoveredShapeId": "shape:lBXRLbHB2y_5hSQhzocgc",
-			"erasingShapeIds": [],
-			"hintingShapeIds": [],
-			"focusedGroupId": null,
-			"meta": {},
-			"id": "instance_page_state:page:page",
-			"pageId": "page:page",
-			"typeName": "instance_page_state"
-		},
-		{
-			"x": 380.80938720703125,
-			"y": 202.85362956245672,
-			"z": 1,
-			"meta": {},
-			"id": "camera:page:page",
-			"typeName": "camera"
-		},
-		{
 			"x": -62.06878662109375,
 			"y": 190.76512577811945,
 			"rotation": 0,
@@ -168,6 +92,103 @@
 			"parentId": "page:page",
 			"index": "a241N",
 			"typeName": "shape"
+		},
+		{
+			"x": -700.0231150853438,
+			"y": 1986.1983336130374,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:UHkfuJBkxdTjMZtzDgKTT",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 372.7890625,
+				"text": "declare -x var=\"ls -la\"\ndeclare -x var_1=\"ls    -la\"\ndeclare -x var_2=\"ls        -la\"\ndeclare -x var_3=\"ls  -l  -a\"\ndeclare -x var_5=\"  ls -la  \"",
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 5.582668603123158
+			},
+			"parentId": "page:page",
+			"index": "a35K1",
+			"typeName": "shape"
+		},
+		{
+			"id": "pointer:pointer",
+			"typeName": "pointer",
+			"x": 2404.858219946539,
+			"y": 2598.3633612971007,
+			"lastActivityTimestamp": 1750339595976,
+			"meta": {}
+		},
+		{
+			"followingUserId": null,
+			"opacityForNextShape": 1,
+			"stylesForNextShape": {},
+			"brush": null,
+			"scribbles": [],
+			"cursor": {
+				"type": "default",
+				"rotation": 0
+			},
+			"isFocusMode": false,
+			"exportBackground": true,
+			"isDebugMode": false,
+			"isToolLocked": false,
+			"screenBounds": {
+				"x": 0,
+				"y": 0,
+				"w": 1171,
+				"h": 717
+			},
+			"insets": [
+				false,
+				false,
+				true,
+				false
+			],
+			"zoomBrush": null,
+			"isGridMode": false,
+			"isPenMode": false,
+			"chatMessage": "",
+			"isChatting": false,
+			"highlightedUserIds": [],
+			"isFocused": true,
+			"devicePixelRatio": 2,
+			"isCoarsePointer": false,
+			"isHoveringCanvas": true,
+			"openMenus": [],
+			"isChangingStyle": false,
+			"isReadonly": false,
+			"meta": {},
+			"duplicateProps": null,
+			"id": "instance:instance",
+			"currentPageId": "page:page",
+			"typeName": "instance"
+		},
+		{
+			"editingShapeId": null,
+			"croppingShapeId": null,
+			"selectedShapeIds": [],
+			"hoveredShapeId": null,
+			"erasingShapeIds": [],
+			"hintingShapeIds": [],
+			"focusedGroupId": null,
+			"meta": {},
+			"id": "instance_page_state:page:page",
+			"pageId": "page:page",
+			"typeName": "instance_page_state"
+		},
+		{
+			"x": 1214.919662752546,
+			"y": 550.003010075777,
+			"z": 0.15329626719699174,
+			"meta": {},
+			"id": "camera:page:page",
+			"typeName": "camera"
 		}
 	]
 }

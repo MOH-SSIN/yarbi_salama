@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 12:36:38 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/18 20:31:29 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/19 12:27:01 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	type_string(int type)
 		|| type == VAR || type == DOUBLE_DLR || type == EXIT_STATUS);
 }
 
-// ✅ Nouvelle version sécurisée : évite d'écraser une nouvelle variable (comme "c")
+//Nouvelle 
 void	concate_string(t_token_node **debut, t_token_node **new)
 {
 	char			*reslut_concat;
@@ -97,7 +97,7 @@ void	concate_string(t_token_node **debut, t_token_node **new)
 	add_lst_back_token(new, new_tkn);
 }
 
-// ✅ Nouvelle version ft_concate_tkn, inchangé car toute la logique est dans concate_string
+// Nouvelle version ft_concate_tkn 
 t_token_node	*ft_concate_tkn(t_token_node *debut)
 {
 	t_token_node	*new_list = NULL;
