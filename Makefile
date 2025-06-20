@@ -6,14 +6,14 @@
 #    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/20 01:24:17 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/06/19 20:21:15 by mez-zahi         ###   ########.fr        #
+#    Updated: 2025/06/20 18:37:00 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 # les dossiers

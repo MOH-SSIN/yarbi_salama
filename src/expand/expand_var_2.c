@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:09:36 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/18 12:45:44 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/20 20:13:47 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	search_hrd(t_token_node *debut)
 	{
 		if (debut->type == HEREDOC)
 			return (1);
-		debut = debut->next;	
+		debut = debut->next;
 	}
 	return (0);
 }

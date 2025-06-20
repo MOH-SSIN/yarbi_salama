@@ -5,71 +5,80 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 20:03:36 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/20 11:16:58 by mez-zahi         ###   ########.fr       */
+/*   Created: 2025/06/20 18:31:43 by mez-zahi          #+#    #+#             */
+/*   Updated: 2025/06/20 20:55:39 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-
 #include "../../include/minishell.h"
 
-// int	ft_fofo(char *str, char c)
-// {
-// 	if (!str)
-// 		return(0);
-// 	while (*str)
-// 	{
-// 		if (*str == c)
-// 			return (1);
-// 		str++;
-// 	}
-// 	return (0);
-// }
-
-int	ft_fofo(char *s, char c)
+static char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	while (*s)
+	size_t	i;
+
+	if (!dest || !src)
+		return (dest);
+	i = 0;
+	while (i < n && src[i])
 	{
-		if (*s == c)
-			return (1);
-		s++;
+		dest[i] = src[i];
+		i++;
 	}
-	return (0);
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
 
-// t_token_node *ft_test(t_token_node *debut)
-// {
-// 	t_token_node *temp;
-// 	t_token_node *next;
+static char	*create_space_token(void)
+{
+	char	*space;
 
-// 	temp = debut;
-// 	while (temp)
-// 	{
-// 		if (ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
-// 		{
-// 			next = temp->next;
-// 			if (next && next->type == SPC)
-// 			{
-// 				next->type = STRING;
-// 				next = next->next;
-// 				while (next && next->type == SPC)
-// 				{
-// 					next->type = STRING;
-// 					next = next->next;
-// 				}
-// 			}
-// 			temp = next;
-// 			continue;
-// 		}
-// 		temp = temp->next;
-// 	}
-// 	return (debut);
-// }
+	space = ft_malloc(2);
+	space[0] = ' ';
+	space[1] = '\0';
+	return (space);
+}
 
-/*
-ona probelem ici
-export a="ls -l -a"
-export b=$a c=$a
-*/
+static char	*create_word_token(const char *str, int start, int end)
+{
+	char	*word;
+	int		len;
+
+	len = end - start;
+	word = ft_malloc(len + 1);
+	ft_strncpy(word, str + start, len);
+	word[len] = '\0';
+	return (word);
+}
+
+char	**split_words_and_spaces(const char *str)
+{
+	char	**result;
+	int		i;
+	int		j;
+	int		start;
+
+	(1) && (i = 0, j = 0);
+	if (!str)
+		return (NULL);
+	result = ft_malloc((ft_strlen(str) + 2) * sizeof(char *));
+	while (str[i])
+	{
+		if (str[i] == ' ')
+			result[j++] = create_space_token();
+		else
+		{
+			start = i;
+			while (str[i] && str[i] != ' ')
+				i++;
+			result[j++] = create_word_token(str, start, i);
+			continue ;
+		}
+		i++;
+	}
+	result[j] = NULL;
+	return (result);
+}

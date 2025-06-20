@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 18:02:18 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/19 20:14:46 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/20 20:13:14 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_expand_var(t_token_node *debut, t_env_var *env, t_minishell *data)
 	}
 }
 
-//->ajouter 
 void	add_mots_to_new_list(t_token_node **new_debut, char **mots)
 {
 	t_token_node	*tmp;
@@ -48,114 +47,28 @@ void	add_mots_to_new_list(t_token_node **new_debut, char **mots)
 	{
 		if (!is_espace(mots[i][0]))
 			new = new_token(VAR, mots[i], -2);
-		else if  (is_espace(mots[i][0]) && is_hrd == 1)//ici
+		else if (is_espace(mots[i][0]) && is_hrd == 1)
 			new = new_token(STRING, mots[i], -2);
-		else if  (is_espace(mots[i][0]))//ici
+		else if (is_espace(mots[i][0]))
 			new = new_token(SPC, mots[i], -2);
 		new->flag = 4;
 		add_lst_back_token(new_debut, new);
 		if (!tmp)
 			tmp = new;
-		// if (mots[i + 1])
-		// {
-		// 	if (is_hrd == 1)
-		// 		add_lst_back_token(new_debut, new_token(STRING, " ", -2));
-		// 	// else
-		// 	// 	add_lst_back_token(new_debut, new_token(SPC, "  ", -2));
-		// }
 		i++;
 	}
 	if (tmp && i > 1)
 		tmp->flag = true;
-	// print_token(*new_debut);
 }
-//
-
-// void	add_mots_to_new_list(t_token_node **new_debut, char **mots)
-// {
-// 	t_token_node	*tmp;
-// 	t_token_node	*new;
-// 	int				i;
-// 	int				is_hrd;
-
-// 	is_hrd = search_hrd(*new_debut);
-// 	i = 0;
-// 	tmp = NULL;
-// 	while (mots && mots[i])
-// 	{
-// 		new = new_token(VAR, mots[i], -2);
-// 		new->flag = 4;
-// 		add_lst_back_token(new_debut, new);
-// 		if (!tmp)
-// 			tmp = new;
-// 		if (mots[i + 1])
-// 		{
-// 			if (is_hrd == 1)
-// 				add_lst_back_token(new_debut, new_token(STRING, " ", -2));
-// 			else
-// 				add_lst_back_token(new_debut, new_token(SPC, " ", -2));
-// 		}
-// 		i++;
-// 	}
-// 	if (tmp && i > 1)
-// 		tmp->flag = true;
-// }
-
-//--> ajuter 
-char **split_words_and_spaces(const char *str)
-{
-    int len = ft_strlen(str);
-    char **result = ft_malloc((len + 2) * sizeof(char *)); // +2 pour mot final + NULL
-    int i = 0, j = 0;
-
-	if (!str)
-		return (NULL);
-    while (str[i])
-	{
-        if (str[i] == ' ')
-		{
-            // Allouer une chaîne juste pour un espace
-            result[j] = ft_malloc(2); // 1 caractère + '\0'
-            result[j][0] = ' ';
-            result[j][1] = '\0';
-            j++;
-            i++;
-        }
-		else
-		{
-            // C'est un mot, collecter jusqu'à prochain espace
-            int start = i;
-            while (str[i] && str[i] != ' ')
-                i++;
-
-            int word_len = i - start;
-            result[j] = ft_malloc(word_len + 1);
-            strncpy(result[j], str + start, word_len);
-            result[j][word_len] = '\0';
-            j++;
-        }
-    }
-    result[j] = NULL; // Fin du tableau
-    return result;
-}
-
-//
-
 
 void	expand_typ_var(t_token_node **new_debut, t_token_node *debut,
 		t_env_var *env, t_minishell *data)
 {
 	char			**mots;
 	t_token_node	*new;
-	int 			x=0;
-	// printf("******************\n");
+
 	ft_expand_var(debut, env, data);
-	// print_token();
-	// printf("******************\n");
 	mots = split_words_and_spaces(debut->value);
-	// exit(1);
-	if (x == 1)
-		mots = ft_decoupe_en_mots(debut->value);
 	if (!mots || !mots[0])
 	{
 		new = new_token(VAR, NULL, debut->fd_hrd);
@@ -192,8 +105,5 @@ t_token_node	*expand_var(t_token_node *debut, t_env_var *env,
 					debut->fd_hrd));
 		debut = debut->next;
 	}
-	// printf("----expn------>\n");
-	// print_token(new_debut);
-	// printf("<--------------\n");
 	return (new_debut);
 }

@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:39:49 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/20 15:26:01 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:04:52 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,27 +109,28 @@ typedef struct s_minishell
 	int					exit_status;
 }						t_minishell;
 
-//->
+int						search_hrd(t_token_node *debut);
+int						oui_space(char *str);
+int						ft_fofo(char *str, char c);
+
+char					**split_words_and_spaces(const char *str);
+
 void					print_mot(char **mots);
 void					print_token(t_token_node *cur);
 void					print_cmd(t_cmd *cur);
 void					print_env(t_env_var *env);
 
-int						ft_fofo(char *str, char c);
-int						search_hrd(t_token_node *debut);
-int						oui_space(char *str);
-
-char **split_words_and_spaces(const char *str);
-
-t_token_node			*changer_flag(t_token_node *debut);
-t_token_node			*generer_nouvelle_liste_tokens(t_token_node *head);
-
+bool					is_strict_assign_token(const char *value);
 bool					is_assign_form(const char *value);
 bool					start_zone_has_equal(t_token_node *start);
 
-t_cmd					*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
-							t_minishell *data);
-//<-
+t_token_node			*change_flag(t_token_node *debut);
+t_token_node			*regrouper_tokens_marques(t_token_node *head);
+
+t_cmd					*ft_prepare_cmd(t_token_node *debut_token,
+							t_env_var *debut_env, t_minishell *data);
+void					handle_input(t_env_var *debut_env, t_minishell *data);
+
 void					clean_cmd_line(char *command);
 int						invalide_fd_hrdc(t_token_node *debut);
 void					unset_free(t_env_var *current, int status);

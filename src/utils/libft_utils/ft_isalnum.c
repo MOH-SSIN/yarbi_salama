@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 17:38:46 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/19 20:20:20 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/05/18 17:19:09 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
-
-int	oui_space(char *str)
-{
-	while (*str)
-	{
-		if (!is_espace(*str)) // ou isspace(*str) si tu utilises <ctype.h>
-			return (0);
-		str++;	
-	}
-	return (1);
-}
 
 int	ft_isalpha(int alpha)
 {

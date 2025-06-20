@@ -6,96 +6,11 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:13:50 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/09 14:05:37 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/20 20:14:04 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-// int	ft_fofo(char *str, char c)
-// {
-// 	if (!str)
-// 		return(0);
-// 	while (*str)
-// 	{
-// 		if (*str == c)
-// 			return (1);
-// 		str++;
-// 	}
-// 	return (0);
-// }
-
-// t_token_node *ft_test(t_token_node *debut)
-// {
-// 	t_token_node *temp;
-// 	t_token_node *next;
-
-// 	temp = debut;
-// 	while (temp)
-// 	{
-// 		if (ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
-// 		{
-// 			next = temp->next;
-// 			if (next && next->type == SPC)
-// 			{
-// 				next->type = STRING;
-// 				next = next->next;
-// 				while (next && next->type == SPC)
-// 				{
-// 					next->type = STRING;
-// 					next = next->next;
-// 				}
-// 			}
-// 			temp = next;
-// 			continue;
-// 		}
-// 		temp = temp->next;
-// 	}
-// 	return (debut);
-// }
-// int is_assignment_value(t_token_node *current, t_token_node *assignment_start)
-// {
-//     t_token_node *temp = assignment_start->next;
-    
-//     while (temp && temp != current)
-//     {
-//         if (temp->type != SPC && ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
-//             return (0);
-//         temp = temp->next;
-//     }
-//     return (temp == current);
-// }
-
-// t_token_node *ft_test(t_token_node *debut)
-// {
-//     t_token_node *temp;
-//     t_token_node *next;
-//     t_token_node *assignment_start;
-    
-//     temp = debut;
-//     assignment_start = NULL;
-//     while (temp)
-//     {
-//         if (ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
-//         {
-//             assignment_start = temp;
-//             next = temp->next;            
-//             while (next)
-//             {
-//                 if (ft_fofo(next->value, '=') == 1 && next->flag == 1)
-//                     break;
-//                 if (next->type == SPC)
-//                     next->type = STRING;
-                
-//                 next = next->next;
-//             }
-//             temp = next;
-//             continue;
-//         }
-//         temp = temp->next;
-//     }
-//     return (debut);
-// }
 
 static int	special_case_len(char *str)
 {

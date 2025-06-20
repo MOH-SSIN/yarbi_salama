@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_herdoc_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 18:10:46 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/09 16:21:06 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/20 21:09:52 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	readline_hdc(char *delimiter, t_env_var *env, int flag, t_minishell *data)
 		if (!ft_strcmp(cmd, delimiter))
 		{
 			free(cmd_copy);
+			// handle_input(env, data);
 			break ;
 		}
 		if (flag != 42)

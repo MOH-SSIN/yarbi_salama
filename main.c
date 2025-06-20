@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 01:23:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/20 15:09:44 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:00:40 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 	t_cmd			*cmd_final;
 
 	debut = expand_var(debut_token, debut_env, data);
-	debut = changer_flag(debut);
-	debut = generer_nouvelle_liste_tokens(debut);
+	debut = change_flag(debut);
+	debut = regrouper_tokens_marques(debut);
 	debut = ft_concate_tkn(debut);
 	debut = remove_red(debut);
 	debut = remove_invalid_tokens(debut);
