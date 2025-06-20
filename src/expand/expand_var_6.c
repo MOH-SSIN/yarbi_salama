@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:03:36 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/18 20:03:37 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:16:58 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,34 +39,34 @@ int	ft_fofo(char *s, char c)
 	return (0);
 }
 
-t_token_node *ft_test(t_token_node *debut)
-{
-	t_token_node *temp;
-	t_token_node *next;
+// t_token_node *ft_test(t_token_node *debut)
+// {
+// 	t_token_node *temp;
+// 	t_token_node *next;
 
-	temp = debut;
-	while (temp)
-	{
-		if (ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
-		{
-			next = temp->next;
-			if (next && next->type == SPC)
-			{
-				next->type = STRING;
-				next = next->next;
-				while (next && next->type == SPC)
-				{
-					next->type = STRING;
-					next = next->next;
-				}
-			}
-			temp = next;
-			continue;
-		}
-		temp = temp->next;
-	}
-	return (debut);
-}
+// 	temp = debut;
+// 	while (temp)
+// 	{
+// 		if (ft_fofo(temp->value, '=') == 1 && temp->flag == 1)
+// 		{
+// 			next = temp->next;
+// 			if (next && next->type == SPC)
+// 			{
+// 				next->type = STRING;
+// 				next = next->next;
+// 				while (next && next->type == SPC)
+// 				{
+// 					next->type = STRING;
+// 					next = next->next;
+// 				}
+// 			}
+// 			temp = next;
+// 			continue;
+// 		}
+// 		temp = temp->next;
+// 	}
+// 	return (debut);
+// }
 
 /*
 ona probelem ici

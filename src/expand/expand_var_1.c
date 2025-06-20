@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 18:02:18 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/18 15:15:02 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/19 20:14:46 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,27 +105,31 @@ void	add_mots_to_new_list(t_token_node **new_debut, char **mots)
 char **split_words_and_spaces(const char *str)
 {
     int len = ft_strlen(str);
-    char **result = malloc((len + 2) * sizeof(char *)); // +2 pour mot final + NULL
+    char **result = ft_malloc((len + 2) * sizeof(char *)); // +2 pour mot final + NULL
     int i = 0, j = 0;
 
 	if (!str)
 		return (NULL);
-    while (str[i]) {
-        if (str[i] == ' ') {
+    while (str[i])
+	{
+        if (str[i] == ' ')
+		{
             // Allouer une chaîne juste pour un espace
-            result[j] = malloc(2); // 1 caractère + '\0'
+            result[j] = ft_malloc(2); // 1 caractère + '\0'
             result[j][0] = ' ';
             result[j][1] = '\0';
             j++;
             i++;
-        } else {
+        }
+		else
+		{
             // C'est un mot, collecter jusqu'à prochain espace
             int start = i;
             while (str[i] && str[i] != ' ')
                 i++;
 
             int word_len = i - start;
-            result[j] = malloc(word_len + 1);
+            result[j] = ft_malloc(word_len + 1);
             strncpy(result[j], str + start, word_len);
             result[j][word_len] = '\0';
             j++;

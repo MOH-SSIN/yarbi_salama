@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+         #
+#    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/20 01:24:17 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/06/09 16:50:19 by idahhan          ###   ########.fr        #
+#    Updated: 2025/06/19 20:21:15 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,8 @@ SRCS = main.c \
 		$(SRC)/$(PREPAR)/remove_red.c\
 		$(SRC)/$(PREPAR)/preparer_cmd_1.c\
 		$(SRC)/$(PREPAR)/preparer_cmd_2.c\
+		$(SRC)/$(PREPAR)/preparer_cmd_3.c\
+		$(SRC)/$(PREPAR)/preparer_cmd_4.c\
 		$(SRC)/$(PREPAR)/ft_print.c\
 		$(SRC)/$(SIGNAL)/signal.c \
 		$(SRC)/$(EXECUTOR)/exec_main.c \
