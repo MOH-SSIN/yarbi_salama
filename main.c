@@ -6,7 +6,7 @@
 /*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 01:23:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/21 14:55:06 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/21 20:59:01 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	handle_input(t_env_var *debut_env, t_minishell *data)
 		{
 			cmd_final = ft_prepare_cmd(debut_token, debut_env, data);
 			data->cmd_list = set_cmd_false_true(&cmd_final);
+			// print_cmd(data->cmd_list);
 			execute_cmds(data);
 			clean_cmd_line(command);
 		}

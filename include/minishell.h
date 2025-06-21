@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:39:49 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/21 19:59:50 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/21 20:01:02 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,6 @@ typedef struct s_minishell
 	char				logical_pwd[PATH_MAX];
 	int					exit_status;
 }						t_minishell;
-
-void					print_mot(char **mots);
-void					print_token(t_token_node *cur);
-void					print_cmd(t_cmd *cur);
-void					print_env(t_env_var *env);
 
 int						search_hrd(t_token_node *debut);
 int						oui_space(char *str);
@@ -221,6 +216,7 @@ t_cmd					*set_cmd_false_true(t_cmd **cmds);
 t_cmd					*token_list_to_cmd_list(t_token_node *debut);
 t_cmd					*ft_split_cmd(t_token_node *debut_tmp);
 t_cmd					*new_cmd(char **args, t_token_node *debut_red);
+void					print_cmd(t_cmd *cur);
 
 // excution
 int						is_builtin(char *cmd);
