@@ -1,0 +1,343 @@
+dans le cas : 
+
+"
+
+export f="g h= i= j=l m n=o p q=r s"
+
+export $f
+
+ona: 
+
+minishell$ export f="g h= i= j=l m n=o p q=r s"
+
+=== DEBUT ft_concate_tkn ===
+
+Tokens d'entrée:
+
+Token[0]: type=5, value='export', flag=0, fd_hrd=-2
+
+Token[1]: type=4, value=' ', flag=0, fd_hrd=-2
+
+Token[2]: type=5, value='f=', flag=0, fd_hrd=-2
+
+Token[3]: type=7, value='g h= i= j=l m n=o p q=r s', flag=0, fd_hrd=-2
+
+Traitement token: type=5, value='export'
+
+  -> Appel concate_string
+
+=== DEBUT concate_string ===
+
+Tokens à concaténer:
+
+  [0] type=5, value='export', flag=0
+
+Concaténation: '(NULL)' + 'export' = 'export'
+
+RESULTAT FINAL: 'export', flag=0
+
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+
+  -> Copie directe
+
+Traitement token: type=5, value='f='
+
+  -> Appel concate_string
+
+=== DEBUT concate_string ===
+
+Tokens à concaténer:
+
+  [0] type=5, value='f=', flag=0
+
+  [1] type=7, value='g h= i= j=l m n=o p q=r s', flag=0
+
+Concaténation: '(NULL)' + 'f=' = 'f='
+
+Concaténation: 'f=' + 'g h= i= j=l m n=o p q=r s' = 'f=g h= i= j=l m n=o p q=r s'
+
+RESULTAT FINAL: 'f=g h= i= j=l m n=o p q=r s', flag=0
+
+=== FIN concate_string ===
+
+Tokens de sortie:
+
+Result[0]: type=5, value='export', flag=0, fd_hrd=-2
+
+Result[1]: type=4, value=' ', flag=0, fd_hrd=-2
+
+Result[2]: type=5, value='f=g h= i= j=l m n=o p q=r s', flag=0, fd_hrd=-2
+
+=== FIN ft_concate_tkn ===
+
+               commande 0 : [export]
+
+outfile: 4
+
+infile: 3
+
+isfirst: 1
+
+islast: 1
+
+argv[0] = export
+
+argv[1] = f=g h= i= j=l m n=o p q=r s
+
+minishell$ 
+minishell$ export $f
+
+=== DEBUT ft_concate_tkn ===
+Tokens d'entrée:
+Token[0]: type=5, value='export', flag=0, fd_hrd=-2
+Token[1]: type=4, value=' ', flag=0, fd_hrd=-2
+Token[2]: type=9, value='g', flag=1, fd_hrd=-2
+Token[3]: type=4, value=' ', flag=1, fd_hrd=-2
+Token[4]: type=9, value='h=', flag=1, fd_hrd=-2
+Token[5]: type=4, value=' ', flag=1, fd_hrd=-2
+Token[6]: type=9, value='i=', flag=1, fd_hrd=-2
+Token[7]: type=4, value=' ', flag=1, fd_hrd=-2
+Token[8]: type=9, value='j=l', flag=1, fd_hrd=-2
+Token[9]: type=4, value=' ', flag=1, fd_hrd=-2
+Token[10]: type=9, value='m', flag=1, fd_hrd=-2
+Token[11]: type=4, value=' ', flag=1, fd_hrd=-2
+Token[12]: type=9, value='n=o', flag=1, fd_hrd=-2
+Token[13]: type=4, value=' ', flag=1, fd_hrd=-2
+Token[14]: type=9, value='p', flag=1, fd_hrd=-2
+Token[15]: type=4, value=' ', flag=1, fd_hrd=-2
+Token[16]: type=9, value='q=r', flag=1, fd_hrd=-2
+Token[17]: type=4, value=' ', flag=1, fd_hrd=-2
+Token[18]: type=9, value='s', flag=1, fd_hrd=-2
+
+Traitement token: type=5, value='export'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=5, value='export', flag=0
+Concaténation: '(NULL)' + 'export' = 'export'
+RESULTAT FINAL: 'export', flag=0
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='g'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='g', flag=1
+Concaténation: '(NULL)' + 'g' = 'g'
+RESULTAT FINAL: 'g', flag=1
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='h='
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='h=', flag=1
+Concaténation: '(NULL)' + 'h=' = 'h='
+RESULTAT FINAL: 'h=', flag=1
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='i='
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='i=', flag=1
+Concaténation: '(NULL)' + 'i=' = 'i='
+RESULTAT FINAL: 'i=', flag=1
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='j=l'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='j=l', flag=1
+Concaténation: '(NULL)' + 'j=l' = 'j=l'
+RESULTAT FINAL: 'j=l', flag=1
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='m'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='m', flag=1
+Concaténation: '(NULL)' + 'm' = 'm'
+RESULTAT FINAL: 'm', flag=1
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='n=o'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='n=o', flag=1
+Concaténation: '(NULL)' + 'n=o' = 'n=o'
+RESULTAT FINAL: 'n=o', flag=1
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='p'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='p', flag=1
+Concaténation: '(NULL)' + 'p' = 'p'
+RESULTAT FINAL: 'p', flag=1
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='q=r'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='q=r', flag=1
+Concaténation: '(NULL)' + 'q=r' = 'q=r'
+RESULTAT FINAL: 'q=r', flag=1
+=== FIN concate_string ===
+
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=9, value='s'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=9, value='s', flag=1
+Concaténation: '(NULL)' + 's' = 's'
+RESULTAT FINAL: 's', flag=1
+=== FIN concate_string ===
+
+
+Tokens de sortie:
+Result[0]: type=5, value='export', flag=0, fd_hrd=-2
+Result[1]: type=4, value=' ', flag=0, fd_hrd=-2
+Result[2]: type=5, value='g', flag=1, fd_hrd=-2
+Result[3]: type=4, value=' ', flag=1, fd_hrd=-2
+Result[4]: type=5, value='h=', flag=1, fd_hrd=-2
+Result[5]: type=4, value=' ', flag=1, fd_hrd=-2
+Result[6]: type=5, value='i=', flag=1, fd_hrd=-2
+Result[7]: type=4, value=' ', flag=1, fd_hrd=-2
+Result[8]: type=5, value='j=l', flag=1, fd_hrd=-2
+Result[9]: type=4, value=' ', flag=1, fd_hrd=-2
+Result[10]: type=5, value='m', flag=1, fd_hrd=-2
+Result[11]: type=4, value=' ', flag=1, fd_hrd=-2
+Result[12]: type=5, value='n=o', flag=1, fd_hrd=-2
+Result[13]: type=4, value=' ', flag=1, fd_hrd=-2
+Result[14]: type=5, value='p', flag=1, fd_hrd=-2
+Result[15]: type=4, value=' ', flag=1, fd_hrd=-2
+Result[16]: type=5, value='q=r', flag=1, fd_hrd=-2
+Result[17]: type=4, value=' ', flag=1, fd_hrd=-2
+Result[18]: type=5, value='s', flag=1, fd_hrd=-2
+=== FIN ft_concate_tkn ===
+
+               commande 0 : [export]
+outfile: 4
+infile: 3
+isfirst: 1
+islast: 1
+argv[0] = export
+argv[1] = g
+argv[2] = h=
+argv[3] = i=
+argv[4] = j=l
+argv[5] = m
+argv[6] = n=o
+argv[7] = p
+argv[8] = q=r
+argv[9] = s
+minishell$ 
+pour la dexime ca 
+export a="b= c       d=e   f=j    k"
+export $a
+
+ona :
+minishell$ export a="b= c       d=e   f=j    k"
+=== DEBUT ft_concate_tkn ===
+Tokens d'entrée:
+Token[0]: type=5, value='export', flag=0, fd_hrd=-2
+Token[1]: type=4, value=' ', flag=0, fd_hrd=-2
+Token[2]: type=5, value='a=', flag=0, fd_hrd=-2
+Token[3]: type=7, value='b= c       d=e   f=j    k', flag=0, fd_hrd=-2
+Traitement token: type=5, value='export'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=5, value='export', flag=0
+Concaténation: '(NULL)' + 'export' = 'export'
+RESULTAT FINAL: 'export', flag=0
+=== FIN concate_string ===
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=5, value='a='
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=5, value='a=', flag=0
+  [1] type=7, value='b= c       d=e   f=j    k', flag=0
+Concaténation: '(NULL)' + 'a=' = 'a='
+Concaténation: 'a=' + 'b= c       d=e   f=j    k' = 'a=b= c       d=e   f=j    k'
+RESULTAT FINAL: 'a=b= c       d=e   f=j    k', flag=0
+=== FIN concate_string ===
+Tokens de sortie:
+Result[0]: type=5, value='export', flag=0, fd_hrd=-2
+Result[1]: type=4, value=' ', flag=0, fd_hrd=-2
+Result[2]: type=5, value='a=b= c       d=e   f=j    k', flag=0, fd_hrd=-2
+=== FIN ft_concate_tkn ===
+               commande 0 : [export]
+outfile: 4
+infile: 3
+isfirst: 1
+islast: 1
+argv[0] = export
+argv[1] = a=b= c       d=e   f=j    k
+minishell$ 
+et 
+minishell$ export $a
+=== DEBUT ft_concate_tkn ===
+Tokens d'entrée:
+Token[0]: type=5, value='export', flag=0, fd_hrd=-2
+Token[1]: type=4, value=' ', flag=0, fd_hrd=-2
+Token[2]: type=5, value='b= c       d=e   f=j    k', flag=1, fd_hrd=-2
+Traitement token: type=5, value='export'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=5, value='export', flag=0
+Concaténation: '(NULL)' + 'export' = 'export'
+RESULTAT FINAL: 'export', flag=0
+=== FIN concate_string ===
+Traitement token: type=4, value=' '
+  -> Copie directe
+Traitement token: type=5, value='b= c       d=e   f=j    k'
+  -> Appel concate_string
+=== DEBUT concate_string ===
+Tokens à concaténer:
+  [0] type=5, value='b= c       d=e   f=j    k', flag=1
+Concaténation: '(NULL)' + 'b= c       d=e   f=j    k' = 'b= c       d=e   f=j    k'
+RESULTAT FINAL: 'b= c       d=e   f=j    k', flag=1
+=== FIN concate_string ===
+Tokens de sortie:
+Result[0]: type=5, value='export', flag=0, fd_hrd=-2
+Result[1]: type=4, value=' ', flag=0, fd_hrd=-2
+Result[2]: type=5, value='b= c       d=e   f=j    k', flag=1, fd_hrd=-2
+=== FIN ft_concate_tkn ===
+               commande 0 : [export]
+outfile: 4
+infile: 3
+isfirst: 1
+islast: 1
+argv[0] = export
+argv[1] = b= c       d=e   f=j    k
+minishell$

@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:39:49 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/21 12:49:40 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:48:46 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,10 @@ typedef struct s_minishell
 	int					exit_status;
 }						t_minishell;
 
+void					print_mot(char **mots);;
+void					print_token(t_token_node *cur);
+void					print_cmd(t_cmd *cur);
+void					print_env(t_env_var *env);
 int						search_hrd(t_token_node *debut);
 int						oui_space(char *str);
 int						ft_fofo(char *str, char c);
