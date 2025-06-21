@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 01:23:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/20 21:00:40 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/21 09:59:02 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	handle_input(t_env_var *debut_env, t_minishell *data)
 			cmd_final = ft_prepare_cmd(debut_token, debut_env, data);
 			data->cmd_list = set_cmd_false_true(&cmd_final);
 			execute_cmds(data);
-			// print_cmd(cmd_final);
 			clean_cmd_line(command);
 		}
 		if (command)
