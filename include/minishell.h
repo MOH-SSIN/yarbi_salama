@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:39:49 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/20 21:04:52 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/21 12:49:40 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,7 @@ int						oui_space(char *str);
 int						ft_fofo(char *str, char c);
 
 char					**split_words_and_spaces(const char *str);
-
-void					print_mot(char **mots);
-void					print_token(t_token_node *cur);
-void					print_cmd(t_cmd *cur);
-void					print_env(t_env_var *env);
+char					*join_flag_tokens(t_token_node **cur);
 
 bool					is_strict_assign_token(const char *value);
 bool					is_assign_form(const char *value);

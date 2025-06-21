@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:19:50 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/09 15:39:50 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/21 12:38:58 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,15 @@ void	unset_var(t_env_var **env, const char *var)
 	{
 		if (ft_strcmp(current->cle, var) == 0)
 		{
-			if (prev == NULL)
-				*env = current->next;
-			else
-				prev->next = current->next;
-			unset_free(current, AJOUTER);
-			return ;
+			if (ft_strcmp(current->cle, "_"))
+			{
+				if (prev == NULL)
+					*env = current->next;
+				else
+					prev->next = current->next;
+				unset_free(current, AJOUTER);
+				return ;
+			}
 		}
 		prev = current;
 		current = current->next;

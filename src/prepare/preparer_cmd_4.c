@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:27:04 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/20 20:20:03 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/21 12:42:08 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_token_node	*change_flag(t_token_node *debut)
 	temp = debut;
 	while (temp && temp->next)
 	{
-		if (ft_fofo(temp->value, '=') && temp->flag == 0)
+		if (temp->value && ft_fofo(temp->value, '=') && temp->flag == 0)
 		{
 			if (temp->next->flag == 1)
 				temp->flag = 1;
@@ -56,7 +56,7 @@ bool	is_assign_form(const char *value)
 	return (false);
 }
 
-bool	start_zone_has_equal(t_token_node *start)//------>
+bool	start_zone_has_equal(t_token_node *start)
 {
 	return (start && start->flag == 1 && is_assign_form(start->value));
 }

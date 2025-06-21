@@ -6,11 +6,25 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:58:20 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/05/16 17:44:20 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/21 12:41:55 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+char	*join_flag_tokens(t_token_node **cur)
+{
+	char	*joined;
+
+	joined = NULL;
+	while (*cur && (*cur)->flag == 1)
+	{
+		if ((*cur)->value && (*cur)->value[0] != '\0')
+			joined = ft_strjoin(joined, (*cur)->value);
+		*cur = (*cur)->next;
+	}
+	return (joined);
+}
 
 t_cmd	*ft_split_cmd(t_token_node *debut_tmp)
 {
