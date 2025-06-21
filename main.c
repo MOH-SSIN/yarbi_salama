@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 01:23:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/21 12:03:09 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:55:06 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ int	main(int argc, char **argv, char **env)
 		;
 	else
 		ft_strlcpy(data.logical_pwd, "", PATH_MAX);
+	close_fds_except_std();
 	handle_input(debut_env, &data);
 	free_env(debut_env);
 	return (0);

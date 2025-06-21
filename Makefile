@@ -6,7 +6,7 @@
 #    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/20 01:24:17 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/06/21 16:48:00 by mez-zahi         ###   ########.fr        #
+#    Updated: 2025/06/21 12:49:02 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,6 @@ SRCS = main.c \
 		$(SRC)/$(PREPAR)/preparer_cmd_2.c\
 		$(SRC)/$(PREPAR)/preparer_cmd_3.c\
 		$(SRC)/$(PREPAR)/preparer_cmd_4.c\
-		$(SRC)/$(PREPAR)/ft_printc\
 		$(SRC)/$(SIGNAL)/signal.c \
 		$(SRC)/$(EXECUTOR)/exec_main.c \
 		$(SRC)/$(EXECUTOR)/exec_external.c \

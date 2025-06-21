@@ -6,7 +6,7 @@
 /*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:16:38 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/09 16:04:18 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:00:32 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,13 @@ void	handle_children(t_cmd *cmd, char **envp, t_minishell *data)
 	if (!path)
 		error_command_not_found(cmd->argv[0], data);
 	if (stat(path, &st) == 0 && S_ISDIR(st.st_mode))
-		error_is_directory(cmd->argv[0]);
+	{
+		if (cmd->argv[0][0] != '/' && !(cmd->argv[0][0] == '.'
+				&& cmd->argv[0][1] == '/') && !ft_strchr(cmd->argv[0], '/'))
+			error_command_not_found(cmd->argv[0], data);
+		else
+			error_is_directory(cmd->argv[0]);
+	}
 	execve(path, cmd->argv, envp);
 	handle_empty_executor(path, envp);
 	exit(127);

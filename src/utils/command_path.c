@@ -6,7 +6,7 @@
 /*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:50:39 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/09 16:00:53 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/21 17:19:23 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,6 @@ char	*get_full_path_from_paths(char *command, char **paths)
 	return (NULL);
 }
 
-static char	*handle_absolute_path(const char *command, t_minishell *data)
-{
-	if (access(command, F_OK | X_OK) == 0)
-		return (ft_strdup(command));
-	else if (access(command, F_OK) == -1)
-		error_no_such_file(command, data);
-	else if (access(command, X_OK) == -1)
-		error_permission_denied(command, data);
-	return (NULL);
-}
-
 static char	*search_in_path(const char *command, char **env)
 {
 	char	**paths;
@@ -75,19 +64,21 @@ static char	*search_in_path(const char *command, char **env)
 	return (full_path);
 }
 
-char	*find_command_path(const char *command, char **env, t_minishell *data)
+static char	*lookup_in_path(const char *command, char **env, t_minishell *data)
 {
-	char	**paths;
-	char	*full_path;
+	struct stat	st;
+	char		*full_path;
 
-	if (command[0] == '/' || (command[0] == '.' && command[1] == '/'))
-		return (handle_absolute_path(command, data));
-	paths = get_path_directories(env);
 	full_path = search_in_path(command, env);
 	if (full_path)
 		return (full_path);
 	if (access(command, F_OK) == 0)
 	{
+		if (stat(command, &st) == 0 && S_ISDIR(st.st_mode))
+		{
+			error_command_not_found(command, data);
+			return (NULL);
+		}
 		if (access(command, X_OK) == 0)
 			return (ft_strdup(command));
 		else
@@ -96,7 +87,30 @@ char	*find_command_path(const char *command, char **env, t_minishell *data)
 			return (NULL);
 		}
 	}
-	if (!paths)
-		error_no_such_file(command, data);
+	error_command_not_found(command, data);
 	return (NULL);
+}
+
+char	*find_command_path(const char *command, char **env, t_minishell *data)
+{
+	struct stat	st;
+	size_t		len;
+
+	if (ft_strchr(command, '/') || (command[0] == '.' && command[1] == '/'))
+	{
+		len = ft_strlen(command);
+		if (ft_strchr(command, '/') || (command[0] == '.' && command[1] == '/'))
+		{
+			if (len > 0 && command[len - 1] == '/')
+				error_is_directory(command);
+			if (access(command, F_OK) == -1)
+				error_no_such_file(command, data);
+			if (stat(command, &st) == 0 && S_ISDIR(st.st_mode))
+				error_is_directory(command);
+			if (access(command, X_OK) == -1)
+				error_permission_denied(command, data);
+		}
+		return (ft_strdup(command));
+	}
+	return (lookup_in_path(command, env, data));
 }
