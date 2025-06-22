@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 14:00:41 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/21 19:59:20 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/21 19:48:59 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,3 +90,20 @@ void	print_env(t_env_var *env)
 		env = env->next;
 	}
 }
+
+// void	read_fd_content(int fd)
+// {
+// 	char	buffer[BUFFER_SIZE + 1];
+// 	ssize_t	bytes_read;
+
+// 	bytes_read = read(fd, buffer, BUFFER_SIZE);
+// 	while (bytes_read > 0)
+// 	{
+// 		buffer[bytes_read] = '\0';
+// 		write(1, buffer, bytes_read);
+// 		bytes_read = read(fd, buffer, BUFFER_SIZE);
+// 	}
+// 	if (bytes_read < 0)
+// 		perror("read");
+// }
+//export a="b=  c d=e"

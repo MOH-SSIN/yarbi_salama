@@ -6,7 +6,7 @@
 /*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:18:38 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/21 20:58:21 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/09 15:51:29 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,10 @@ void	handle_empty_value(char *cmd, t_env_var *envp)
 
 void	handle_export(char *cmd, char *key, char *value, t_env_var *envp)
 {
-	char	*equal;
-
-	equal = ft_strchr(cmd, '=');
-	if (equal && (equal == cmd || *(equal - 1) != '+'))
-		handle_export_with_value(cmd, key, value, envp);
-	else if (is_append_export(cmd))
+	if (is_append_export(cmd))
 		handle_append_expand(cmd, key, value, envp);
+	else if (ft_strchr(cmd, '='))
+		handle_export_with_value(cmd, key, value, envp);
 	else
 		handle_empty_value(cmd, envp);
 }
