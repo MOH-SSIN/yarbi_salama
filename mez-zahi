@@ -1,8 +1,0 @@
-Makefile
-include
-main.c
-main.o
-mez-zahi
-minishell
-mohcine.tldr
-src
