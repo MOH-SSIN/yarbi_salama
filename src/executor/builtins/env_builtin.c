@@ -6,7 +6,7 @@
 /*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 18:02:56 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/09 16:12:01 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/22 16:42:23 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	error_path_missing(const char *argv, t_minishell *data)
 	data->exit_status = 127;
 }
 
-static void	error_cmd_not_found(const char *argv, t_minishell *data)
+static void	err_cmd_not_found(const char *argv, t_minishell *data)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(argv, 2);
@@ -42,7 +42,7 @@ void	exec_env(char *argv, t_env_var *env, t_minishell *data)
 	}
 	else if (find_command_path(argv, envp, data) == NULL)
 	{
-		error_cmd_not_found(argv, data);
+		err_cmd_not_found(argv, data);
 		return ;
 	}
 	while (env)

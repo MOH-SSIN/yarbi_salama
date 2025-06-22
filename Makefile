@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
+#    By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/20 01:24:17 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/06/21 20:06:25 by mez-zahi         ###   ########.fr        #
+#    Updated: 2025/06/22 16:56:33 by idahhan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 # les dossiers

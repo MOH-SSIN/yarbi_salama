@@ -6,7 +6,7 @@
 /*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:50:39 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/21 17:19:23 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/22 16:41:20 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ static char	*lookup_in_path(const char *command, char **env, t_minishell *data)
 			return (NULL);
 		}
 	}
-	error_command_not_found(command, data);
 	return (NULL);
 }
 
