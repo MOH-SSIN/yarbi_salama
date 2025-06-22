@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:17:45 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/21 14:58:53 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/22 15:36:04 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	red_in(t_token_node *red, t_minishell *data)
 {
 	int	fd;
 
-	if (red->flag)
+	if (red->flag || !red->value)
 	{
 		printf("minishell: ambiguous redirect\n");
 		return (-1);
@@ -33,7 +33,7 @@ static int	red_out(t_token_node *red, t_minishell *data)
 {
 	int	fd;
 
-	if (red->flag)
+	if (red->flag || !red->value)
 	{
 		printf("minishell: ambiguous redirect\n");
 		return (-1);
@@ -50,7 +50,7 @@ static int	red_append(t_token_node *red, t_minishell *data)
 {
 	int	fd;
 
-	if (red->flag)
+	if (red->flag || !red->value)
 	{
 		printf("minishell: ambiguous redirect\n");
 		return (-1);

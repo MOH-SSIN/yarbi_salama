@@ -6,23 +6,42 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:27:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/22 10:29:04 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/22 14:54:14 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	handle_flag_tokens(t_token_node **cur, t_token_node **new_list)
+static void	copy_flag_tokens(t_token_node **cur, t_token_node **new_list)
 {
 	t_token_node	*tmp;
 
-	if ((*cur)->value && (*cur)->value[0] != '\0')
+	while (*cur && (*cur)->flag == 1)
 	{
-		tmp = new_token((*cur)->type, (*cur)->value, (*cur)->fd_hrd);
+		if ((*cur)->value && (*cur)->value[0] != '\0')
+		{
+			tmp = new_token((*cur)->type, (*cur)->value, (*cur)->fd_hrd);
+			tmp->flag = 1;
+			add_lst_back_token(new_list, tmp);
+		}
+		*cur = (*cur)->next;
+	}
+}
+
+static void	handle_flag_tokens(t_token_node **cur, t_token_node **new_list)
+{
+	t_token_node	*tmp;
+	char			*joined;
+
+	if (start_zone_has_equal(*cur))
+	{
+		joined = join_flag_tokens(cur);
+		tmp = new_token(5, joined, -2);
 		tmp->flag = 1;
 		add_lst_back_token(new_list, tmp);
 	}
-	*cur = (*cur)->next;
+	else
+		copy_flag_tokens(cur, new_list);
 }
 
 static void	process_empty_flag_token(t_token_node *cur, t_token_node **new_list)

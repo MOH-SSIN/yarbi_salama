@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:58:20 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/21 12:41:55 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/22 15:38:51 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,32 @@ char	*join_flag_tokens(t_token_node **cur)
 		*cur = (*cur)->next;
 	}
 	return (joined);
+}
+
+t_token_node	*fix_isolated_flagged_tokens(t_token_node *head)
+{
+	t_token_node	*prev;
+	t_token_node	*cur;
+	t_token_node	*next;
+	bool			prev_ok;
+	bool			next_ok;
+
+	prev = NULL;
+	cur = head;
+	while (cur)
+	{
+		next = cur->next;
+		if (cur->flag == 1)
+		{
+			prev_ok = (prev == NULL || prev->flag == 0);
+			next_ok = (next == NULL || next->flag == 0);
+			if (prev_ok && next_ok)
+				cur->flag = 0;
+		}
+		prev = cur;
+		cur = cur->next;
+	}
+	return (head);
 }
 
 t_cmd	*ft_split_cmd(t_token_node *debut_tmp)

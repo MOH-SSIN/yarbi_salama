@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:39:49 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/21 19:59:50 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/22 15:31:09 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,6 @@ typedef struct s_minishell
 	int					exit_status;
 }						t_minishell;
 
-void					print_mot(char **mots);
-void					print_token(t_token_node *cur);
-void					print_cmd(t_cmd *cur);
-void					print_env(t_env_var *env);
-
 int						search_hrd(t_token_node *debut);
 int						oui_space(char *str);
 int						ft_fofo(char *str, char c);
@@ -127,6 +122,7 @@ bool					start_zone_has_equal(t_token_node *start);
 
 t_token_node			*change_flag(t_token_node *debut);
 t_token_node			*regrouper_tokens_marques(t_token_node *head);
+t_token_node			*fix_isolated_flagged_tokens(t_token_node *head);
 
 t_cmd					*ft_prepare_cmd(t_token_node *debut_token,
 							t_env_var *debut_env, t_minishell *data);
@@ -284,7 +280,10 @@ void					error_open_file(const char *filename,
 void					error_is_directory(const char *cmd);
 void					error_open_dir(void);
 void					handle_cd_error(char *target_dir, t_minishell *data);
-
+void					print_mot(char **mots);
+void					print_token(t_token_node *cur);
+void					print_cmd(t_cmd *cur);
+void					print_env(t_env_var *env);
 // libf utils
 
 long					ft_atol(const char *str);

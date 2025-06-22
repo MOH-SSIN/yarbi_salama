@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/20 01:23:06 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/21 14:55:06 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/22 15:39:47 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_cmd	*ft_prepare_cmd(t_token_node *debut_token, t_env_var *debut_env,
 	debut = change_flag(debut);
 	debut = regrouper_tokens_marques(debut);
 	debut = ft_concate_tkn(debut);
+	debut = fix_isolated_flagged_tokens(debut);
 	debut = remove_red(debut);
 	debut = remove_invalid_tokens(debut);
 	cmd_final = token_list_to_cmd_list(debut);
