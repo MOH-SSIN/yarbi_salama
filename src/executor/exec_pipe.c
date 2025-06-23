@@ -6,7 +6,7 @@
 /*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:17:40 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/09 16:04:29 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/23 15:27:27 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@ static void	close_unused_fds(t_cmd *cmd, int prev_fd)
 		close(cmd->pipe_fd[0]);
 	if (cmd->pipe_fd[1] > 2)
 		close(cmd->pipe_fd[1]);
+}
+
+static void	wait_for_children(pid_t last_pid, t_minishell *data)
+{
+	int	status;
+
+	if (waitpid(last_pid, &status, 0) == -1)
+		perror("waitpid");
+	if (WIFEXITED(status))
+		data->exit_status = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == SIGINT)
+			write(1, "\n", 1);
+		data->exit_status = 128 + WTERMSIG(status);
+	}
+	while (wait(NULL) > 0)
+		;
 }
 
 static void	handle_child(t_cmd *cmd, int prev_fd, t_minishell *data,

@@ -6,7 +6,7 @@
 #    By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/20 01:24:17 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/06/22 16:56:33 by idahhan          ###   ########.fr        #
+#    Updated: 2025/06/23 15:25:35 by idahhan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ SRCS = main.c \
 		$(SRC)/$(UTILS)/utils1.c \
 		$(SRC)/$(UTILS)/utils2.c \
 		$(SRC)/$(UTILS)/utils3.c \
-		$(SRC)/$(UTILS)/utils4.c \
 		$(SRC)/$(LEXER)/lexer_1.c \
 		$(SRC)/$(LEXER)/lexer_2.c \
 		$(SRC)/$(LEXER)/lexer_3.c \

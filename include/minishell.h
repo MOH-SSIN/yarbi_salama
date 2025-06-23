@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:39:49 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/22 15:31:09 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:26:50 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,7 +266,6 @@ void					handle_empty_executor(char *path, char **envp);
 void					restore_sig(void);
 void					handle_children(t_cmd *cmd, char **envp,
 							t_minishell *data);
-void					wait_for_children(pid_t last_pid, t_minishell *data);
 // Errors
 
 void					error_command_not_found(const char *cmd,

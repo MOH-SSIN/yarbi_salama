@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:17:45 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/22 15:36:04 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:44:33 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	red_in(t_token_node *red, t_minishell *data)
 	if (red->flag || !red->value)
 	{
 		printf("minishell: ambiguous redirect\n");
+		data->exit_status = 1;
 		return (-1);
 	}
 	fd = open(red->value, O_RDONLY);
@@ -36,6 +37,7 @@ static int	red_out(t_token_node *red, t_minishell *data)
 	if (red->flag || !red->value)
 	{
 		printf("minishell: ambiguous redirect\n");
+		data->exit_status = 1;
 		return (-1);
 	}
 	fd = open(red->value, O_CREAT | O_WRONLY | O_TRUNC, 0644);
@@ -53,6 +55,7 @@ static int	red_append(t_token_node *red, t_minishell *data)
 	if (red->flag || !red->value)
 	{
 		printf("minishell: ambiguous redirect\n");
+		data->exit_status = 1;
 		return (-1);
 	}
 	fd = open(red->value, O_CREAT | O_WRONLY | O_APPEND, 0644);
