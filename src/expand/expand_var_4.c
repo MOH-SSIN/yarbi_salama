@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_var_4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:26:11 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/09 14:32:31 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:59:06 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*expand_dollar_var(char *str_var, int *i, t_env_var *env)
 		(*i)++;
 	count_dlr = *i - count_dlr;
 	if (count_dlr % 2 == 0)
-		str_exp = ft_itoa(getpid());
+		str_exp = ft_strdup("$$");
 	else
 		str_exp = get_var_sigle_dolar(str_var + *i, env);
 	return (str_exp);

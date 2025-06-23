@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expand_var_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 18:02:18 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/06/20 20:13:14 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:02:23 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-void	expand_pid_var(t_token_node **new_debut, t_token_node *debut)
-{
-	add_lst_back_token(new_debut, new_token(debut->type, ft_itoa(getpid()),
-			debut->fd_hrd));
-}
 
 void	ft_expand_var(t_token_node *debut, t_env_var *env, t_minishell *data)
 {
@@ -98,8 +92,6 @@ t_token_node	*expand_var(t_token_node *debut, t_env_var *env,
 			add_lst_back_token(&new_debut, new_token(debut->type,
 					expand_vars_and_heredoc(debut->value, env, data),
 					debut->fd_hrd));
-		else if (debut->type == DOUBLE_DLR)
-			expand_pid_var(&new_debut, debut);
 		else
 			add_lst_back_token(&new_debut, new_token(debut->type, debut->value,
 					debut->fd_hrd));

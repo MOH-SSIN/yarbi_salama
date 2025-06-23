@@ -6,7 +6,7 @@
 /*   By: idahhan <idahhan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:17:40 by idahhan           #+#    #+#             */
-/*   Updated: 2025/06/23 15:27:27 by idahhan          ###   ########.fr       */
+/*   Updated: 2025/06/23 15:49:21 by idahhan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ static void	wait_for_children(pid_t last_pid, t_minishell *data)
 	if (WIFEXITED(status))
 		data->exit_status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
-	{
-		if (WTERMSIG(status) == SIGINT)
-			write(1, "\n", 1);
 		data->exit_status = 128 + WTERMSIG(status);
-	}
 	while (wait(NULL) > 0)
 		;
 }
